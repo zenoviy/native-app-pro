@@ -1,0 +1,79 @@
+1)
+- Hooks
+- Expo
+- Jest 
+
+- MonoRepo
+
+
+- ScrollView  render all at once
+- FlatList  - better for long list
+- SectionList  - devided by sectuions
+
+https://reactnative.dev/docs/using-a-listview
+
+
+- state management Libraries
+	- MobX
+
+https://www.smashingmagazine.com/2020/08/mobx-state-manager-react-native-applications/
+//////////////////// Libraries
+- React navigation
+- Typesctipt
+
+///////////////////////////////////// Testing
+https://reactnative.dev/docs/testing-overview
+AAA (Arrange, Act, Assert)
+    Given - some precondition
+    When - some action executed by the function that you’re testing
+    Then - the expected outcome
+
+Unit Tests	- частини
+IntegrationTests - групи частин
+Component Tests
+E2E   Detox https://github.com/wix/detox/   http://appium.io/
+
+
+beforeEach or beforeAll
+ensure that your tests are completely independent of one another
+if you run all your tests together, the first test must not influence the output of the second one.
+
+
+describe('TEST NAME'){
+	it('given a date in the past, colorForDueDate() returns red', () => {
+  		expect(colorForDueDate('2000-10-20')).toBe('red');
+	});
+}
+
+In integration testing, real individual units are combined (same as in your app) 
+and tested together to ensure that their cooperation works as expected.
+
+
+    Interaction: to ensure the component behaves correctly when interacted with by a user (eg. when user presses a button)
+    Rendering: to ensure the component render output used by React is correct (eg. the button's appearance and placement in the UI)
+
+https://reactjs.org/docs/test-renderer.html
+https://callstack.github.io/react-native-testing-library/
+
+////////////////////////////////////////////Websocket
+var ws = new WebSocket('ws://host.com/path');
+
+ws.onopen = () => {
+  // connection opened
+  ws.send('something'); // send a message
+};
+
+ws.onmessage = (e) => {
+  // a message was received
+  console.log(e.data);
+};
+
+ws.onerror = (e) => {
+  // an error occurred
+  console.log(e.message);
+};
+
+ws.onclose = (e) => {
+  // connection closed
+  console.log(e.code, e.reason);
+};
