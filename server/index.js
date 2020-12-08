@@ -8,8 +8,10 @@ const app = express();
 
 
 app.get('/all-news', (req, res) => {
-  console.log(1)
-  res.status(200).send({name: 'news', body: newsPost});
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+  res.status(200).send(JSON.stringify({name: 'news', body: newsPost}));
 
 });
 
