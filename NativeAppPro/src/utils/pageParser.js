@@ -18,10 +18,10 @@ const pageTextParser = (textToParse) => {
 
     let index = 0;
    
+    //const regexp = /<p>/g;
+    //let allPElIndexStart = textToParse.matchAll(regexp);
 
-    let allPElIndexStart = textToParse.matchAll(new RegExp("<p>", "g"));
-
-    console.log(allPElIndexStart)
+    //console.log(allPElIndexStart)
 
     return textToParse
 
