@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Text, ImageBackground } from 'react-native';
-import { WebView } from 'react-native-webview';
 import globalStyle from './style/global-style'; 
 import Context from '../utils/context';
 import pageTextParser  from '../utils/pageParser';

@@ -5,7 +5,7 @@ import Context from '../utils/context';
 import globalStyle from './style/global-style'; 
 
 
-const AppClicker = () => {
+const AppClicker = ({navigation}) => {
     const context = React.useContext(Context);
     const [clicks, setClicks] = useState(0);
     return(
@@ -26,6 +26,11 @@ const AppClicker = () => {
             <Button 
                 title="Alternat Click"
                 onPress={() => context.clickerMaker()}
+            />
+
+            <Button 
+                title="To Blocks test"
+                onPress={() => navigation.navigate('BlocksDesign')}
             />
         </View>
     )

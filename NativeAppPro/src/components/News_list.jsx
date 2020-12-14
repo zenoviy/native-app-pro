@@ -28,10 +28,10 @@ const NewsList = ({currentNewsPosts, navigation}) => {
 
 const Card = ({data, navigation}) => {
     let item = data.item;
+    if(!item) return(<Text>No News Yet...</Text>)
     return(
         <View  key={item.id} style={globalStyle.card}>   
-
-                <Image 
+            <Image 
                 source={{uri: item.postBody.titleImage}}
                 style={{
                     flex: 1,

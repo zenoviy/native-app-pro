@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect }  from 'react';
 import Context from '../utils/context';
 import  ACTIONS  from '../actions';
-import Navigation from '../components/Navigation';
+
+import TabBar from '../components/navigation/TabNavigation';
 
 import * as ClickerReducer from '../reducers/clicker_reducers';
 import * as NewsReducer from '../reducers/news_reducers'; 
@@ -43,7 +44,6 @@ const AppGlobalState = () => {
 
 
 
-    
     useEffect(() => {
         newsGetter()
     }, [])
@@ -55,7 +55,7 @@ const AppGlobalState = () => {
                 newsGetter: () => newsGetter(),
                 getLocalNews: (id) => getLocalNews(id)
             }}>
-            <Navigation />
+            <TabBar />
         </Context.Provider>
     )
 
