@@ -1,28 +1,37 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { 
     Text, 
     View, 
     SafeAreaView, 
     FlatList, 
     Image, 
-    TouchableOpacity 
+    TouchableOpacity ,ScrollView
 } from 'react-native';
 import globalStyle from './style/global-style'; 
+import TasksPanel from './details/TasksPannel';
+
+import Context from '../utils/context';
+
 
 const NewsList = ({currentNewsPosts, navigation}) => {
+    const context = useContext(Context);
+
+    //console.log('>>', context)
     return(
-        <SafeAreaView style={globalStyle.container}>
-            <Text>News Screen</Text>
+        <View style={globalStyle.container}>
             <FlatList
                 data={ currentNewsPosts}
                 renderItem={ (item) => { return <Card data={item} navigation={navigation}  />}  }
                 extra={"Extra"}
+    
+                ListHeaderComponent={() => <TasksPanel navigation={navigation} context={context} />}
                 keyExtractor={item =>{ 
                     return item.id.toString()
                 }}>
 
             </FlatList>
-        </SafeAreaView>       
+
+        </View>       
     )
 }
 
@@ -36,7 +45,7 @@ const Card = ({data, navigation}) => {
                 style={{
                     flex: 1,
                     width: "100%",
-                    height: null,
+                    height: 250,
                     resizeMode: 'cover',
                     backgroundColor: "#FFF"
                 }}
@@ -45,10 +54,10 @@ const Card = ({data, navigation}) => {
                     <TouchableOpacity onPress={() => { 
                         navigation.navigate('SigleNews', {id: item.id, title: item.title})
                     }}>
-                    <Text style={globalStyle.heading_2}>{item.title} </Text>
-                    <Text style={{
-                        alignSelf: "flex-end"
-                    }}>Detail</Text>
+                        <Text style={globalStyle.heading_4}>{item.title} </Text>
+                        <Text style={{
+                            alignSelf: "flex-end"
+                        }}>Detail</Text>
                     </TouchableOpacity>
                 </View>
         </View>

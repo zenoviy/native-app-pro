@@ -25,7 +25,7 @@ export const AllAvailebleNewsReducer = ( store = initialState, action ) => {
 
             let foundNews = searchSingleItem({id: action.payload}, store.currentNewsPosts);
 
-            console.log(foundNews, action.payload)
+            //console.log(foundNews, action.payload)
             if(!foundNews) return store;
             return {
                 ...store,

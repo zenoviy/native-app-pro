@@ -32,6 +32,9 @@ const BlocksDesign = ({ route, navigation }) => {
 
     return(
         <View style={{flex: 1}}>
+            <View style={{padding: 10, backgroundColor: "green", color: '#fff'}}>
+                    <Text style={{color: '#fff'}}>Hold Top</Text>
+                </View>
             <ScrollView>
                 <Text style={{textAlign: 'center'}}>blocks design</Text>
                 <WorkoutCard excersize='squat' repsAndWeight='5x5' sets={[3, 4, 1, 5, 6]}/>
@@ -52,7 +55,8 @@ const BlocksDesign = ({ route, navigation }) => {
                     <View style={{height: 100, backgroundColor: 'steelblue'}} />
                 </View>
                 
-            </ScrollView><View style={{padding: 10, backgroundColor: "green", color: '#fff'}}>
+            </ScrollView>
+                <View style={{padding: 10, backgroundColor: "green", color: '#fff'}}>
                     <Text style={{color: '#fff'}}>Hold bar</Text>
                 </View>
         </View>
@@ -162,7 +166,6 @@ const style = StyleSheet.create({
         borderRadius: 3,
         backgroundColor: "#ffffff",
         shadowColor: "#000000",
-        shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 2,
@@ -216,8 +219,8 @@ const style = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 10,
         backgroundColor: "#fff",
-        minHeight: 100
-
+        minHeight: 100,
+        marginBottom: 10
     }
     
 })

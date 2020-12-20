@@ -37,15 +37,12 @@ export default StyleSheet.create({
         flexDirection: 'row'
     },
     card: {
-        paddingTop: 20,
-        paddingBottom: 20,
-        marginVertical: 8,
-        marginTop: 10,
-
+        paddingTop: 10,
+        paddingBottom: 10,
+        marginTop: 5,
         width: "100%",
         minHeight: 300,
         flex: 1,
-        marginVertical: 10,
         shadowColor: "black",
         shadowOffset: {
             width: 0,
@@ -57,9 +54,9 @@ export default StyleSheet.create({
         backgroundColor: "#fff",
     },
     cardTextArea: {
-        padding: 20,
+        padding: 5,
         marginVertical: 8,
-        marginHorizontal: 16,
+        marginHorizontal: 40,
     },
     image: {
         flex: 1,
@@ -69,6 +66,7 @@ export default StyleSheet.create({
         color: "white"
     },
     singlePageHeader: {
-        height: 200
+        paddingBottom: 40,
+        paddingTop: 40 
     }
 });

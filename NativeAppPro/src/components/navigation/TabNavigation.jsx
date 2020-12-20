@@ -2,11 +2,11 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import {MaterialIcons, MaterialCommunityIcons} from '@expo/vector-icons';
 
-import * as StackNav from './Navigation';  //Navigation
+import * as StackNav from './Navigation';  //Navigation  add
 
 const Tab = createMaterialBottomTabNavigator();
 
-const TabBar = () => {
+const TabBar = () => {  // NavigationTask
     return(
         <Tab.Navigator>
             <Tab.Screen 
@@ -16,6 +16,16 @@ const TabBar = () => {
                 tabBarLabel: 'Home',
                 tabBarIcon: ({ color }) => (
                   <MaterialIcons name="home" color={color} size={27} />
+                ),
+            }}/>
+
+            <Tab.Screen 
+            name="Create Task" 
+            component={StackNav.NavigationTask}
+            options={{
+                tabBarLabel: 'Create Task',
+                tabBarIcon: ({ color }) => (
+                  <MaterialIcons name="add" color={color} size={27} />
                 ),
             }}/>
             <Tab.Screen 

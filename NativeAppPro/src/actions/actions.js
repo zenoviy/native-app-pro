@@ -1,20 +1,34 @@
-import { ACTION_TYPE } from './action-type';
+import { ACTION_TYPE, TASK_ACTION_TYPE, USER_PROFILE } from './action-type';
 import * as apiWorkers from '../api_workers';
+
+import { newsDatabase } from '../mockData/newsDataDb';
+import { taskList } from '../mockData/taskList';
+import { profileData } from '../mockData/profileData';
 
 export const getAllAvailableNewsAction = currentNewsData => {
     return new Promise((resolve, reject) => {
-        apiWorkers.getAvailebleNewsWorker(currentNewsData)
+        resolve({
+            type: ACTION_TYPE.LOAD_LAST_NEWS,
+            payload: newsDatabase
+        });  
+        /*apiWorkers.getAvailebleNewsWorker(currentNewsData)
         .then(res => res.json())
         .then(res => {
-            console.log(res, 'Response')
+            //console.log(res, 'Response')
 
             resolve({
                 type: ACTION_TYPE.LOAD_LAST_NEWS,
                 payload: res.body
-            });
+            });  
         })
-        .catch(err => console.error(err, 'Error has been occurd in Action getAllAvailableNewsAction'));
-    }) 
+        .catch(err => {
+             reject({
+                type: ACTION_TYPE.LOAD_LAST_NEWS,
+                payload: newsDatabase
+            })
+            console.error(err, 'Error has been occurd in Action getAllAvailableNewsAction')});
+    }) */
+    })
 }
 
 export const getSingleNewsAction = newsData => {
@@ -37,5 +51,59 @@ export const getLocalNews = id => {
     return({
         type: ACTION_TYPE.GET_SINGLE_DATA_LOCAL,
         payload: id
+    })
+}
+
+
+export const makePhotoState = state => {
+    return({
+        type: ACTION_TYPE.MAKE_PHOTO_STATE,
+        payload: state
+    })
+}
+
+
+
+
+/* Tasks */
+export const getAllTaskList = state => {
+    return({
+        type: ACTION_TYPE.GET_ALL_TASKS,
+        payload: taskList
+    })
+}
+export const addTaskToUserList = task => {
+    return({
+        type: USER_PROFILE.ADD_USER_TASK,
+        payload: task
+    })
+}
+export const completeTask = id => {
+    return({
+        type: USER_PROFILE.COMPLETE_TASK,
+        payload: id
+    })
+}
+export const addMediaToTask = (media, id) => {
+    return({
+        type: USER_PROFILE.ADD_PHOTO_TO_TASK,
+        payload: {media, id}
+    })
+}
+export const codingCodeTask = state => {
+    return({
+        type: TASK_ACTION_TYPE.CODING_CODE,
+        payload: state
+    })
+}
+
+
+
+/* User */
+
+export const userAuthorization = () => {
+    return({
+        type: USER_PROFILE.AUTHORIZATION_USER,
+        payload: profileData
     })
 }
