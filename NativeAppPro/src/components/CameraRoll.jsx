@@ -11,7 +11,7 @@ import { Text,
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
-import CameraRoll from "@react-native-community/cameraroll";
+//import CameraRoll from "@react-native-community/cameraroll";
 
 import Context from '../utils/context';
 
@@ -156,15 +156,23 @@ loadPicture()
     return(
         <View style={styles.container}>
             <Text>Gallery</Text>
-            {mediaMode === "select photo" ? 
-            <Button 
-                title="Take selected picture"
-                onPress={() => {
-                    route.params.context.taskAddMedia(taskPicture,  route.params.currentTaskId)
-                    //goBack()
-                }}
-            /> : null }
-            <Button title="Refresh" onPress={ loadPicture } />
+            <View style={{marginBottom: 10}}>
+               {mediaMode === "select photo" ? 
+                <Button 
+                    
+                    title="Take selected picture"
+                    color="#41A900"
+                    onPress={async () => {
+
+                       await route.params.context.taskAddMedia(taskPicture,  route.params.currentTaskId)
+                       await route.params.completeTaskMethod()
+                        setGalleryEdit(false)
+                        goBack()
+                    }}
+                /> : null } 
+            </View>
+            
+            <Button style={{mergin: 10}} title="Refresh" onPress={ loadPicture } />
             <ScrollView>
                 <View style={{flex: 1, flexWrap: 'wrap', flexDirection: 'row'}}>
                    {
@@ -189,8 +197,8 @@ loadPicture()
                                             style={{ 
                                                 width: 100 + '%', 
                                                 height: 200, 
-                                                borderWidth: galleryEdit? 2 : 0,
-                                                borderColor: galleryEdit? "#ff0000": null,
+                                                borderWidth: galleryEdit? 2 : 2,
+                                                borderColor: galleryEdit? "#ff0000": "#FFF",
                                             }}
                                             key={pictureData.id}
                                             source={{uri: pictureData.uri}}
@@ -214,23 +222,31 @@ loadPicture()
 
 const EditArea = ({ setGalleryEdit, deletePicturesProcess, setSelectedPicture }) => {
     return(
-        <View>
-            <Text>Edit area</Text>
-            <Button 
-                title="confirm delate"
-                onPress={() => {
-                    //alert('delate pic')
-                    deletePicturesProcess()
-                    setSelectedPicture([])
-                }}
-            ></Button>
-            <Button 
+        <View style={{width: "100%", padding: 10}}>
+            <Text style={{padding: 10}}>Delate image</Text>
+            <View style={{marginBottom: 10, flex: 1, justifyContent: "flex-end", flexDirection: "row"}}>
+                <View style={{marginRight: 10}}>
+                    <Button 
+                        title="confirm delate"
+                        color="#ff0000"
+                        onPress={() => {
+                            //alert('delate pic')
+                            deletePicturesProcess()
+                            setSelectedPicture([])
+                        }}
+                    ></Button>
+                </View>
+                
+                <Button 
                 title="Cancel"
                 onPress={() => {
                     //alert('Cancel')
                     setGalleryEdit(false)
                 }}
             ></Button>
+            </View>
+            
+            
         </View>
     )
 }
@@ -242,7 +258,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignContent: 'center'
+        alignContent: 'center',
+        flexDirection: "column"
     },
     editableArea: {
         flexDirection: 'row'

@@ -38,6 +38,13 @@ export const getSingleNewsAction = newsData => {
     });
 }
 
+export const addTaskMessageToNews = taskNews => {
+    return({
+        type: ACTION_TYPE.ADD_TASK_MESSAGE_TO_NEWS,
+        payload: taskNews
+    })
+}
+
 export const clickerAction = clickValue => {
     return({
         type: ACTION_TYPE.MAKE_CLICK,
@@ -78,10 +85,16 @@ export const addTaskToUserList = task => {
         payload: task
     })
 }
-export const completeTask = id => {
+export const completeTask = ({id, currentTask, type}) => {
     return({
         type: USER_PROFILE.COMPLETE_TASK,
-        payload: id
+        payload: {id, currentTask, type}
+    })
+}
+export const finishTheTask = ({id, currentTask}) => {
+    return({
+        type: USER_PROFILE.FINISH_THE_TASK,
+        payload: {id, currentTask}
     })
 }
 export const addMediaToTask = (media, id) => {

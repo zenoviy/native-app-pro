@@ -16,24 +16,28 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import Context from '../utils/context';
+import { createNotificationPost } from '../utils/completeTask';
 
 // Home
 const TaskScreen = ({route, navigation}) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [taskData, setTaskData] = useState(route.params.taskData);
+    const [taskData, setTaskData] = useState(Object.assign({}, route.params.taskData));
 
     const context = useContext(Context);
 
 
     const chaneSettings = (currentSettings) => {
-        //console.log(currentSettings)
-
         let changeSettings = Object.assign({}, taskData);
-        //console.log(changeSettings.checkList)
         if(!changeSettings) return false
         changeSettings.checkList.requirement.editableSettings[currentSettings.index][currentSettings.name] = currentSettings.text;
         setTaskData(changeSettings)/**/
     }
+//console.log("Reload")
+//useState(Object.assign({}, route.params.taskData))
+    useEffect(() => {
+        
+        return () => true
+    }, [])
 
     return(
         <View>
@@ -42,7 +46,7 @@ const TaskScreen = ({route, navigation}) => {
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
+                //Alert.alert("Modal has been closed.");
                 }}
             >
                 <View style={styles.centeredView}>
@@ -60,13 +64,21 @@ const TaskScreen = ({route, navigation}) => {
                     <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#4BA918" }}
                         onPress={() => {
-                            //alert("start this task")
         
                             setModalVisible(!modalVisible);
-                            taskData.startTime = new Date().getTime();
-                            taskData.id = new Date().getTime();
+                            //taskData.startTime = new Date().getTime();
+                            //taskData.id = new Date().getTime();
+                            let newTaskData = Object.assign({}, taskData)
+                            //console.log(newTaskData, taskData)
+                            newTaskData.startTime = new Date().getTime();
+                            newTaskData.id = new Date().getTime();
+                            //newTaskData
+                            //newTaskData
                     
-                            context.addUserTask(taskData)
+                            context.addUserTask(newTaskData)
+                            //createNewPost
+                            let notificationPost = createNotificationPost({taskData: newTaskData, type: 'start-new-task'})
+                            context.createTaskNews(notificationPost) //createTaskNews
                             navigation.navigate("Home")
                         }}
                     >
@@ -79,6 +91,7 @@ const TaskScreen = ({route, navigation}) => {
             <Text>{taskData.description}</Text>
             <View>
                 { taskData.checkList.requirement.editableSettings.map((settings, index) => {
+                    if(!settings.editable) return(<Text>{index}</Text>)
                     return(
                         <TaskSettings   
                             key={index} 
@@ -102,6 +115,9 @@ const TaskScreen = ({route, navigation}) => {
         </View>
     )
 }
+
+
+
 
 const TaskSettings = ({taskData, settings, index, chaneSettings}) => {
    // console.log(settings)

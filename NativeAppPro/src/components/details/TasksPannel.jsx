@@ -16,7 +16,7 @@ const TasksPanel = ({navigation, context}) => {
 
 
     useEffect(() => { 
-        console.log('Hook load')
+        //console.log('Hook load')
     },[])
 
     const userTask = context.userData.userTask;  // currentTasks

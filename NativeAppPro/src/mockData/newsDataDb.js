@@ -1,6 +1,8 @@
 export const newsDatabase = [
     {
         id: 1,
+        postTime: new Date().getTime(),
+        type: "news",
         title: 'Here are 10 of Arecibo’s coolest achievements',
         author: 'test dev',
         authorLink: '',
@@ -51,6 +53,8 @@ export const newsDatabase = [
     },
     {
         id: 2,
+        postTime: new Date().getTime() +1 ,
+        type: "news",
         title: 'An enormous supervolcano may be hiding under Alaskan islands',
         author: 'test dev 2',
         authorLink: '',
@@ -67,7 +71,7 @@ export const newsDatabase = [
                 supervolcano erupted, a new study suggests.`
             },
             {
-               url: "https://www.sciencenews.org/wp-content/uploads/2020/12/120420_BG_alaska-supervolcano_inlline-desktop.png",
+                url: "https://www.sciencenews.org/wp-content/uploads/2020/12/120420_BG_alaska-supervolcano_inlline-desktop.png",
                description: `Some of the clues that a supervolcano may lurk under the Islands of the Four Mountains, in the Aleutian 
                Islands chain in southwest Alaska, come from seafloor topography mapping, like this bathymetry map compiled by NOAA. 
                Gray areas mark the existing volcanoes. The orange zones show shallow volcanic areas apparently connected below the surface in a roughly circular pattern.`

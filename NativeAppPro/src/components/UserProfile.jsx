@@ -23,7 +23,8 @@ const UserProfileScreen = () => {
                 <Text style={{fontSize: 30}}>{context.userData ? userProfile.userName : null}</Text>
                 <Text style={{fontSize: 20}}>{context.userData ? userProfile.userEmail : null}</Text>
 
-                { userTask.currentTasks.length ? <Text>{userTask.currentTasks.length}</Text> : <Text>No Taskyet</Text> }
+                { userTask.currentTasks.length ? <Text>Current tasks:{userTask.currentTasks.length}</Text> : <Text>No Task yet</Text> }
+                { userTask.completeTasks.length ? <Text>Complete tasks: {userTask.completeTasks.length}</Text> : <Text>No Complete Task yet</Text> }
             </ScrollView>
             
         </View>

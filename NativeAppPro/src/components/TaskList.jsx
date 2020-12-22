@@ -17,7 +17,9 @@ const TaskLIstScreen = ({navigation}) => {
     const context = React.useContext(Context);
 
     useEffect(() => {
-        context.getAllTaskList()
+        context.getAllTaskList();
+       // console.log("Reaload list")
+        return () => true
     }, [])
 
     return(

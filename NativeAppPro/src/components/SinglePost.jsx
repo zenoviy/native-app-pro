@@ -33,10 +33,11 @@ const SinglePost = ({ route, navigation }) => {
                     }}>Single News {route.params.id} {route.params.title}</Text>
                 </ImageBackground>
                 <View style={{padding: 20, backgroundColor: "#fff"}}>
-                    <HTML
+                    {singlePost.type === "start-new-task" || singlePost.type === "finish-task" ? <Text>{singlePost.postBody.mainText}</Text> : <HTML
                         source={{ html: singlePost.postBody.mainText }} 
                         contentWidth={contentWidth} 
-                    />
+                    /> }
+                    
                 </View>
                 
             </ScrollView>

@@ -6,6 +6,9 @@ export const taskList = [
         title: 'Coding code',
         description: `Write some code`,
         attachedMedia: [],
+        message: [],
+        completePercent: 0,
+        likes: 0,
         checkList: {
             requirement: {
                 rate: 3,
@@ -13,34 +16,39 @@ export const taskList = [
                 editableSettings: [
                     {
                         description: "time to end min 1",
+                        descriptionInComplete: "",
+                        descriptionInProgress: "Finish the task in time",
+                        required: true,
                         type: "time",
                         name: "endValue",
                         endValue: 1,
                         min: 1,
                         units: 'hrs',
+                        editable: true,
+                        finish: false
                     },{
-                        description: "Number of pivcture",
+                        description: "Number of picture",
+                        descriptionInComplete: "",
+                        descriptionInProgress: "Creata a prove pictures",
+                        required: true,
                         type: "photo",
                         name: "endValue",
                         endValue: 6,
-                        min: 6
+                        min: 6,
+                        editable: true,
+                        finish: false
                     },{
                         description: "Create a description",
+                        descriptionInComplete: "",
+                        descriptionInProgress: "You must finish this task",
                         type: "text",
                         name: "endValue",
-                        endValue: ''
+                        endValue: '',
+                        editable: true,
+                        finish: false
                     },
                 ]
             },
-            toDo: {
-                inTime: false,
-                attachFiles: false,
-                rate: false,
-                proves: false,
-                completePercent: 0,
-                likes: 0,
-                timeEnd: null,
-            }
         }
     }, {
         id: 2,
@@ -49,6 +57,9 @@ export const taskList = [
         title: 'Clean up',
         description: 'Clean up house',
         attachedMedia: [],
+        message: [],
+        completePercent: 0,
+        likes: 0,
         checkList: {
             requirement: {
                 timeUnits: 'hrs',
@@ -59,34 +70,39 @@ export const taskList = [
                 editableSettings: [
                     {
                         description: "time to end min 1",
+                        descriptionInComplete: "",
+                        descriptionInProgress: "Finish the task in time",
+                        required: true,
                         type: "time",
                         name: "endValue",
                         endValue: 1,
                         min: 1,
                         units: 'hrs',
+                        editable: true,
+                        finish: false
                     },{
                         description: "Number of picture",
+                        descriptionInComplete: "",
+                        descriptionInProgress: "Creata a prove pictures",
+                        required: true,
                         type: "photo",
                         name: "endValue",
                         endValue: 6,
-                        min: 6
+                        min: 6,
+                        editable: true,
+                        finish: false
                     },{
                         description: "Create a description",
+                        descriptionInComplete: "",
+                        descriptionInProgress: "You must finish this task",
                         type: "text",
                         name: "endValue",
-                        endValue: ''
+                        endValue: '',
+                        editable: true,
+                        finish: false
                     },
                 ]
             },
-            toDo: {
-                inTime: false,
-                attachFiles: false,
-                rate: false,
-                proves: false,
-                completePercent: 0,
-                likes: 0,
-                timeEnd: null,
-            }
         }
     }
 ] 

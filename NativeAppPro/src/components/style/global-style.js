@@ -21,8 +21,8 @@ export default StyleSheet.create({
     },
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+      //alignItems: 'center',
+      //justifyContent: 'center',
       width: "100%"
     },
     topBlock: {
@@ -56,7 +56,7 @@ export default StyleSheet.create({
     cardTextArea: {
         padding: 5,
         marginVertical: 8,
-        marginHorizontal: 40,
+        marginHorizontal: 5,
     },
     image: {
         flex: 1,

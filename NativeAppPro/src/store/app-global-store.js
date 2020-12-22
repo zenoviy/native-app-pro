@@ -25,6 +25,7 @@ const AppGlobalState = () => {
     const [userData, setUserData] = useReducer(UserProfileReducer.UserProfileReducer, UserProfileReducer.initialState);
 
     const newsGetter = () => {
+        //console.log(1)
         let newsData = {
             HOST: GLOBAL_VARIABLES.HOST,
             PORT: GLOBAL_VARIABLES.PORT,
@@ -43,6 +44,10 @@ const AppGlobalState = () => {
 
     const getLocalNews = (id) => {
         getAvailebleNews(ACTIONS.getLocalNews(id));
+    }
+
+    const createTaskNews = (taskNews) => {
+        getAvailebleNews(ACTIONS.addTaskMessageToNews(taskNews))
     }
 
     const clickerMaker = () => {
@@ -66,6 +71,12 @@ const AppGlobalState = () => {
     const taskAddMedia = (media, id) => {
         setUserData(ACTIONS.addMediaToTask(media, id))
     }
+    const completeUserTask = ({id, currentTask, type}) => {
+        setUserData(ACTIONS.completeTask({id, currentTask, type}))
+    }
+    const finishUserTask = ({id, currentTask}) => {
+        setUserData(ACTIONS.finishTheTask({id, currentTask}))
+    }
 
     // user 
     // userAuthorization
@@ -76,8 +87,9 @@ const AppGlobalState = () => {
     useEffect(() => {
         authorizedUser()
         newsGetter()
-        
+        console.log("get news")
     }, [])
+    //console.log("get news 1")
     return(
         <Context.Provider value={{
                 availableNews,
@@ -91,7 +103,10 @@ const AppGlobalState = () => {
                 makePhotosState: (state) => makePhotosState(state),
                 getAllTaskList: () => getAllTaskList(),
                 addUserTask: (task) => addUserTask(task),
-                taskAddMedia: (media, id) => taskAddMedia(media, id)
+                taskAddMedia: (media, id) => taskAddMedia(media, id),
+                createTaskNews: (taskNews) => createTaskNews(taskNews),
+                completeUserTask: ({id, currentTask, type}) => completeUserTask({id, currentTask, type}),
+                finishUserTask: ({id, currentTask}) => finishUserTask({id, currentTask})
             }}>
             <TabBar />
         </Context.Provider>
